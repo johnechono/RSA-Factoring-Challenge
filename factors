@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+if __name__ == "__main__":
+    from sys import argv
+    from math import sqrt
+
+    def factors():
+        with open(argv[1]) as f:
+            for line in f:
+                n = int(line)
+                print("{:d}".format(n), end="")
+                if n % 2 == 0:
+                    print("{}*2".format(n // 2), end="")
+                    continue
+                x = int(sqrt(n))
+                if x % 2 == 0:
+                    x += 1
+                for i in range(3, x + 1, 2):
+                    if n % i == 0:
+                        print("{}*{}".format(n // i, i), end="")
+                        break
+                print()
+
+    factors() 
